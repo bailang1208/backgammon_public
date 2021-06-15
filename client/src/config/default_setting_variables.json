@@ -1,0 +1,6 @@
+{
+  "min-cashin":5000,
+  "max-cashin":10000,
+  "min-cashout": 5000,
+  "max-cashout": 10000
+}

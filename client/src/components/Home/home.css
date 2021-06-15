@@ -1,0 +1,16 @@
+.home img {
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.5s;
+}
+.home img:hover {
+  transform: scale(1.1);
+  z-index: 999;
+}
+.home img:active {
+  transform: scale(1);
+}
+
+.home .container {
+  text-align: center;
+}

@@ -1,0 +1,46 @@
+body{width:100%;background:url('../images/bg.jpg');background-size:150%;padding:1px 0 0 0}
+body:after{content: '';
+	display: block;
+	position: fixed;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background:url('../images/bgdot.png') repeat; z-index:-1
+}
+
+.row{}
+.col{width:50%;position:relative;box-sizing:border-box;float:left;padding:1%}
+.col img{width:100%;}
+/*.col span{position:absolute;bottom:0;left:0;right:0;box-sizing:border-box;padding:4% 10px;text-align:center;font-size:18px;background:rgba(0,0,0,.7);color:white;}*/
+
+
+
+@media only screen and (min-width: 568px){
+	.col{
+		width: 30%;
+		float: left;	
+	}
+	.col:nth-child(3n+1){
+		margin-right: 5%;
+	}
+	.col:nth-child(3n+0){
+		margin-left: 5%;
+	}
+}
+footer{    margin-top: 50px;    background-color: rgba(0,0,0,.7);    padding: 15px;}
+.social{	float: left;    text-align: left;}
+.social > a > img{    height: 80px;    width: auto;    margin:0 5px 0 0}
+
+#contact_form{float:right;color:white;padding:2% 0 0 0;line-height:1.5;margin:0 10px 0 0}
+#contact_form a{color:rgb(238, 232, 170) !important;}
+
+.telegram_help{float:right;}
+.telegram_help a img{height: 80px;width: auto;margin:0 5px 0 10px}
+
+
+@media only screen and (max-width: 690px){
+	
+	#social, #contact_form, #telegram_help{float:none;margin:0 0 15px 0;text-align:center}
+
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Node Socket Test Page - Sing In</title>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+<h1>Welcome Deer.</h1>
+<h3>This is a test page for sign in</h3>
+
+<div style="margin: 10px; padding: 10px;">
+    <form id="register-form" action="/auth/sign-in" method="post">
+        <div>
+            <label for="username">User Name</label>
+            <input class="form-control" id="username" type="text" placeholder="username or email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input class="form-control" id="password" type="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Log in</button>
+    </form>
+</div>
+
+<div style="margin: 10px; padding: 10px; border: solid 1px grey" id="msgPanel">
+
+</div>
+
+<script>
+
+    $(function () {
+        $('#register-form').on('submit', function (e) {
+            e.preventDefault();
+            var reqData = {
+                username: $('#username').val(),
+                password: $('#password').val()
+            };
+            $.post('/api/auth/signin', reqData)
+                .done(function(res) {
+                    console.log(res);
+                    $('#msgPanel').html('registered successfully.');
+                    window.location = '/test-page';
+                })
+                .fail(function(err) {
+                    console.log(err);
+                    $('#msgPanel').html(err.responseJSON.message);
+                });
+            return false;
+        });
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Node Socket Test Page - Sing Up</title>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css">
+    <script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+<body>
+<h1>Welcome Deer.</h1>
+<h3>This is a test page for sign up</h3>
+
+<div style="margin: 10px; padding: 10px;">
+    <form id="register-form" action="/auth/sign-up" method="post">
+        <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" class="form-control" required>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" class="form-control" required>
+        </div>
+        <div class="form-group" show-errors>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+        </div>
+        <div>
+            <label for="username">User Name</label>
+            <input class="form-control" id="username" type="text" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input class="form-control" id="password" type="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+</div>
+
+<div style="margin: 10px; padding: 10px; border: solid 1px grey" id="msgPanel">
+
+</div>
+
+<script>
+
+    $(function () {
+        $('#register-form').on('submit', function (e) {
+            e.preventDefault();
+            var reqData = {
+                firstName: $('#firstName').val(),
+                lastName: $('#lastName').val(),
+                email: $('#email').val(),
+                username: $('#username').val(),
+                password: $('#password').val(),
+                provider: 'local'
+            };
+            $.post('/api/auth/signup', reqData)
+                .done(function(res) {
+                    console.log(res);
+                    $('#msgPanel').html('registered successfully.');
+                })
+                .fail(function(err) {
+                    console.log(err);
+                    $('#msgPanel').html(err.responseJSON.message);
+                });
+            return false;
+        });
+    })
+
+</script>
+</body>
+</html>
